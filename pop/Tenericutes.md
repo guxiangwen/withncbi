@@ -211,50 +211,6 @@ bash ASSEMBLY/Tenericutes.assembly.collect.sh
 
 ```
 
-## NCBI taxonomy
-
-```bash
-cd ~/data/alignment/Tenericutes
-
-bp_taxonomy2tree.pl -e \
-    -s "Acholeplasma" \
-    -s "Anaeroplasma" \
-    -s "Asteroleplasma" \
-    -s "Entomoplasma" \
-    -s "Haloplasma" \
-    -s "Hepatoplasma" \
-    -s "Inordinaticella" \
-    -s "Izimaplasma" \
-    -s "Mesoplasma" \
-    -s "Mycoplasma" \
-    -s "Phytoplasma" \
-    -s "Spiroplasma" \
-    -s "Ureaplasma" \
-    -s "Bacillus subtilis" \
-    -s "Staphylococcus aureus" \
-    -s "Eubacterium limosum" \
-    -s "Erysipelothrix rhusiopathiae" \
-    -s "Clostridium acetobutylicum" \
-    -s "Clostridium tetani" \
-    -s "Amycolatopsis mediterranei" \
-    -s "Bifidobacterium adolescentis" \
-    -s "Corynebacterium glutamicum" \
-    -s "Mycobacterium tuberculosis" \
-    -s "Brucella melitensis" \
-    -s "Neisseria gonorrhoeae" \
-    -s "Escherichia coli" \
-    -s "Salmonella enterica" \
-    -s "Pseudomonas aeruginosa" \
-    -s "Pseudomonas putida" \
-    -s "Helicobacter pylori" \
-    > Tenericutes.newick
-
-nw_display -w 600 -s Tenericutes.newick |
-    rsvg-convert -o ~/Scripts/withncbi/image/Tenericutes.png
-
-```
-
-![Tenericutes.png](../image/Tenericutes.png)
 
 ## Count strains
 
@@ -286,7 +242,7 @@ parallel --no-run-if-empty --linebuffer -k -j 4 '
 #Entomoplasma    6       10
 #Mesoplasma      11      15
 #Spiroplasma     25      30
-#Mycoplasma      86      197
+#Mycoplasma      81      190
 #Ureaplasma      4       25
 
 mkdir -p taxon
@@ -414,21 +370,21 @@ done
 | Order             | Genus           | Comments           | Species | Strains |
 |:------------------|:----------------|:-------------------|--------:|--------:|
 | Acholeplasmatales |                 |                    |         |         |
-|                   | Acholeplasma    | 无胆甾原体           |      11 |      13 |
-|                   | Phytoplasma     | 植原体              |         |      25 |
+|                   | Acholeplasma    | 无胆甾原体          |      11 |      12 |
+|                   | Phytoplasma     | 植原体              |       22|      24 |
 | Anaeroplasmatales |                 |                    |         |         |
 |                   | Anaeroplasma    |                    |       1 |       1 |
 |                   | Asteroleplasma  |                    |         |         |
 | Entomoplasmatales |                 | 虫原体              |         |         |
 |                   | Entomoplasma    |                    |       6 |      10 |
 |                   | Mesoplasma      |                    |      11 |      15 |
-|                   | Spiroplasma     | 螺原体, 感染昆虫与植物 |      25 |      31 |
+|                   | Spiroplasma     | 螺原体, 感染昆虫与植物|     25 |      30 |
 | Mycoplasmatales   |                 |                    |         |         |
-|                   | Mycoplasma      | 支原体              |      86 |     207 |
+|                   | Mycoplasma      | 支原体              |      83 |     190 |
 |                   | Ureaplasma      | 脲原体              |       4 |      25 |
 |                   | Hepatoplasma    |                    |       1 |       1 |
 | Unclassified      |                 |                    |         |         |
-|                   | Izimaplasma     | 独立生活             |         |       3 |
+|                   | Izimaplasma     | 独立生活            |        1|       3 |
 | Haloplasmatales   |                 |                    |         |         |
 |                   | Haloplasma      |                    |       1 |       1 |
 |                   | Inordinaticella |                    |       1 |       1 |
@@ -519,12 +475,12 @@ done \
 cat PROTEINS/all.pro.fa |
     grep "^>" |
     wc -l
-#310265
+#307385
 
 cat PROTEINS/all.replace.fa |
     grep "^>" |
     wc -l
-#310265
+#307385
 
 rm -fr temp
 (echo -e "#name\tstrain" && cat PROTEINS/all.strain.tsv)  \
@@ -564,7 +520,7 @@ done \
 
 cat PROTEINS/all.annotation.tsv |
     wc -l
-#310265
+#307385
 
 rm -fr temp
 (echo -e "#name\tannotation" && cat PROTEINS/all.annotation.tsv) \
@@ -592,7 +548,7 @@ tsv-join \
 
 cat PROTEINS/all.info.tsv |
     wc -l
-#310266
+#307386
 
 ```
 
